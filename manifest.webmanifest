@@ -1,0 +1,17 @@
+{
+  "name": "Jai Sri Sundha Bhavani Sweet Home",
+  "short_name": "Sundha Bhavani",
+  "description": "Order sweets, khara snacks and biscuits.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fffdf8",
+  "theme_color": "#7b1e25",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
