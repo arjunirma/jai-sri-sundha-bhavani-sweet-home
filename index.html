@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7b1e25">
+  <meta name="description" content="Order sweets, khara snacks and biscuits from Jai Sri Sundha Bhavani Sweet Home, Mylavaram.">
+  <title>Jai Sri Sundha Bhavani Sweet Home</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <style>
+    :root { --maroon:#7b1e25; --gold:#e7b34c; --cream:#fff8eb; --ink:#2b201c; --muted:#75645d; --green:#28794b; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--ink); background:#fffdf8; }
+    header { background:linear-gradient(135deg,#651820,#9e3432); color:white; padding:24px 16px 28px; text-align:center; border-bottom:5px solid var(--gold); }
+    .deity { width:74px;height:74px;display:grid;place-items:center;margin:0 auto 10px;border-radius:50%;background:#fff2d2;color:#7b1e25;border:3px solid var(--gold);font-size:37px; }
+    header h1 { margin:0; font-size:clamp(1.55rem,4vw,2.5rem); line-height:1.15; }
+    header p { margin:8px 0 0; color:#ffe9bd; }
+    .contact { margin-top:12px; font-weight:650; }
+    .wrap { max-width:1180px;margin:auto;padding:18px 14px 100px; }
+    .toolbar { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:0 0 16px; }
+    input,select,textarea,button { font:inherit; }
+    .search { flex:1; min-width:180px; padding:12px 14px; border:1px solid #e5d8c7; border-radius:12px; background:white; }
+    .tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+    .tab { border:1px solid #e3d4c0; background:white; color:var(--ink); padding:9px 14px; border-radius:999px; cursor:pointer; }
+    .tab.active { background:var(--maroon); color:white; border-color:var(--maroon); }
+    .layout { display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:20px; align-items:start; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(205px,1fr)); gap:13px; }
+    .product { background:white; border:1px solid #eee1d0; border-radius:16px; padding:14px; box-shadow:0 3px 14px #4b230a0a; }
+    .product .emoji { font-size:30px; }
+    .product h3 { margin:8px 0 4px; font-size:1.02rem; }
+    .category { font-size:.78rem; color:var(--muted); }
+    .price { color:var(--maroon); font-weight:800; margin:9px 0 10px; }
+    .price-details { color:#5f514b; font-size:.84rem; min-height:38px; white-space:pre-line; }
+    .product select { width:100%; margin:10px 0 8px; border:1px solid #e4d5c2; border-radius:9px; padding:9px; background:#fffdf9; }
+    button { border:0; border-radius:10px; padding:10px 12px; cursor:pointer; }
+    .primary { background:var(--maroon); color:white; font-weight:700; }
+    .add { width:100%; }
+    .cart { position:sticky; top:12px; background:#fff9ee; border:1px solid #e8d4b3; border-radius:16px; padding:16px; }
+    .cart h2 { margin:0 0 12px; font-size:1.2rem; }
+    .empty { color:var(--muted); font-size:.92rem; }
+    .cartline { border-bottom:1px solid #eadbc8; padding:10px 0; }
+    .cartline-top { display:flex; justify-content:space-between; gap:8px; font-weight:650; }
+    .qty { display:flex; align-items:center; gap:8px; margin-top:6px; }
+    .qty button { padding:3px 9px; background:white; border:1px solid #dec9ad; }
+    .total { display:flex; justify-content:space-between; font-size:1.1rem; font-weight:800; margin:14px 0; }
+    .cart .primary { width:100%; }
+    .smallnote { font-size:.78rem;color:var(--muted);line-height:1.4;margin-top:10px; }
+    .checkout { margin-top:16px; padding-top:14px; border-top:1px solid #e8d4b3; }
+    .checkout h3 { margin:0 0 10px; }
+    .checkout label { display:block; font-size:.85rem; font-weight:650; margin:9px 0 5px; }
+    .checkout input,.checkout select,.checkout textarea { width:100%; border:1px solid #e1d2bd; border-radius:9px; padding:10px; background:white; }
+    .checkout textarea { min-height:65px; resize:vertical; }
+    .paynote { background:#fff0cf;padding:9px;border-radius:8px;font-size:.8rem;margin-top:8px; }
+    footer { text-align:center;color:var(--muted);padding:25px 14px;border-top:1px solid #eee0cc;font-size:.85rem; }
+    .install { background:#f4d88e;color:#4b2c12;font-weight:750; }
+    .notice { padding:12px 14px; background:#fff0cf; border:1px solid #f0d69a; border-radius:12px; margin:0 0 16px; font-size:.9rem; }
+    @media(max-width:850px) { .layout{grid-template-columns:1fr}.cart{position:static}.grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr))} }
+    @media(max-width:420px) { .wrap{padding-left:10px;padding-right:10px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.product{padding:10px}.product h3{font-size:.92rem}.price-details{font-size:.78rem} }
+  </style>
+</head>
+<body>
+<header>
+  <div class="deity" aria-label="Sunda Mata symbol">🙏</div>
+  <h1>Jai Sri Sundha Bhavani Sweet Home</h1>
+  <p>Fresh Sweets • Khara Items • Biscuits</p>
+  <p class="contact">📍 Mylavaram, NTR District, Andhra Pradesh</p>
+  <p class="contact">WhatsApp: 9908053102 · 9110786623</p>
+</header>
+<main class="wrap">
+  <div class="notice"><strong>Welcome!</strong> Choose items and pack sizes, add them to your cart, then send your order through WhatsApp. The shop will confirm availability, delivery charges and payment.</div>
+  <div class="toolbar">
+    <input id="search" class="search" type="search" placeholder="Search sweets, khara or biscuits…" aria-label="Search menu">
+    <button id="installBtn" class="install" hidden>Install app</button>
+  </div>
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-category="All">All items</button>
+    <button class="tab" data-category="Sweets">Sweets</button>
+    <button class="tab" data-category="Khara">Khara / Savouries</button>
+    <button class="tab" data-category="Biscuits">Biscuits</button>
+  </div>
+  <div class="layout">
+    <section>
+      <div id="products" class="grid" aria-live="polite"></div>
+    </section>
+    <aside class="cart">
+      <h2>🛒 Your Cart <span id="cartCount">(0)</span></h2>
+      <div id="cartItems" class="empty">Your cart is empty. Add an item to begin.</div>
+      <div class="total"><span>Total</span><span id="total">₹0</span></div>
+      <div class="checkout">
+        <h3>Order details</h3>
+        <form id="checkoutForm">
+          <label for="customerName">Customer name *</label>
+          <input id="customerName" required placeholder="Your full name">
+          <label for="phone">Phone number *</label>
+          <input id="phone" required inputmode="tel" pattern="[0-9+() -]{8,18}" placeholder="Your contact number">
+          <label for="fulfilment">Pickup or delivery *</label>
+          <select id="fulfilment" required>
+            <option value="Pickup">Shop pickup</option>
+            <option value="Home delivery">Home delivery</option>
+          </select>
+          <label for="address">Delivery address (if delivery)</label>
+          <textarea id="address" placeholder="House number, street, area, landmark"></textarea>
+          <label for="payment">Payment preference</label>
+          <select id="payment">
+            <option>Cash</option>
+            <option>UPI (confirm payment details with shop)</option>
+          </select>
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" placeholder="Preferred pickup time or other request"></textarea>
+          <button class="primary" style="width:100%;margin-top:12px" type="submit">Send order on WhatsApp</button>
+        </form>
+        <div class="paynote">UPI is a payment preference only in this starter version. No payment is collected by this website. Confirm the shop's UPI ID and amount directly before paying.</div>
+        <p class="smallnote">Your order opens in WhatsApp for you to review and send. It is not submitted until you press Send in WhatsApp. This starter has no online database or automatic order tracking.</p>
+      </div>
+    </aside>
+  </div>
+</main>
+<footer>
+  Jai Sri Sundha Bhavani Sweet Home · Mylavaram, NTR District, Andhra Pradesh<br>
+  Prices are shown as provided by the shop. Please confirm stock and final bill before payment.
+</footer>
+<script>
+const products = [
+  {id:"palakova",name:"Palakova",cat:"Sweets",emoji:"🍬",prices:[["1 kg",300],["1 piece",10]],details:"₹300/kg · ₹10/piece"},
+  {id:"jangri",name:"Jangri",cat:"Sweets",emoji:"🍥",prices:[["1 kg",300],["1 piece",10]],details:"₹300/kg · ₹10/piece"},
+  {id:"ajmer-kalakand",name:"Ajmer Kalakand",cat:"Sweets",emoji:"🍮",prices:[["1 kg",500],["1 piece",20]],details:"₹500/kg · ₹20/piece"},
+  {id:"soan-papdi",name:"Soan Papdi",cat:"Sweets",emoji:"🍬",prices:[["1 kg",250],["1 piece",10]],details:"₹250/kg · ₹10/piece"},
+  {id:"mysore-pak",name:"Mysore Pak",cat:"Sweets",emoji:"🟨",prices:[["1 kg",300],["1 piece",10]],details:"₹300/kg · ₹10/piece"},
+  {id:"akbar-badshah",name:"Akbar Badshah",cat:"Sweets",emoji:"🍬",prices:[["1 kg",250],["1 piece",10]],details:"₹250/kg · ₹10/piece"},
+  {id:"badusha",name:"Badusha",cat:"Sweets",emoji:"🍩",prices:[["1 kg",250],["1 piece",10]],details:"₹250/kg · ₹10/piece"},
+  {id:"halwa",name:"Halwa",cat:"Sweets",emoji:"🍮",prices:[["1 kg",300],["1 piece",10]],details:"₹300/kg · ₹10/piece"},
+  {id:"mix-halwa",name:"Mix Halwa",cat:"Sweets",emoji:"🍮",prices:[["1 kg",300],["1 piece",10]],details:"₹300/kg · ₹10/piece"},
+  {id:"chanda-mama",name:"Chanda Mama Sweet",cat:"Sweets",emoji:"🌙",prices:[["1 kg",250],["1 piece",10]],details:"₹250/kg · ₹10/piece"},
+  {id:"khajjigai",name:"Khajjigai / Khajjikayalu",cat:"Sweets",emoji:"🥟",prices:[["1 kg",250],["1 piece",10]],details:"₹250/kg · ₹10/piece"},
+  {id:"big-boondi-laddu",name:"Big Boondi Laddu",cat:"Sweets",emoji:"🟠",prices:[["1 kg",250],["1 piece",10]],details:"₹250/kg · ₹10/piece"},
+  {id:"motichoor-laddu",name:"Motichoor Laddu",cat:"Sweets",emoji:"🟠",prices:[["1 kg",360],["1 piece",20]],details:"₹360/kg · ₹20/piece"},
+  {id:"small-chakori",name:"Small Chakori",cat:"Khara",emoji:"🥨",prices:[["1 kg",250],["100 g",30]],details:"₹250/kg · ₹30/100 g"},
+  {id:"big-kharam-boondi",name:"Big Kharam Boondi",cat:"Khara",emoji:"🟠",prices:[["1 kg",250],["100 g",30],["250 g",60]],details:"₹250/kg · ₹30/100 g · ₹60/250 g"},
+  {id:"corn-chips",name:"Corn Chips",cat:"Khara",emoji:"🌽",prices:[["1 kg",250],["100 g",30],["250 g",60]],details:"₹250/kg · ₹30/100 g · ₹60/250 g"},
+  {id:"chakka-pakodi",name:"Chakka Pakodi",cat:"Khara",emoji:"🥨",prices:[["1 kg",250],["100 g",30],["250 g",60]],details:"₹250/kg · ₹30/100 g · ₹60/250 g"},
+  {id:"lava-karam-pusa",name:"Lava Karam Pusa",cat:"Khara",emoji:"🌶️",prices:[["1 kg",250],["100 g",30],["250 g",60]],details:"₹250/kg · ₹30/100 g · ₹60/250 g"},
+  {id:"sanna-karam-pusa",name:"Sanna Karam Pusa",cat:"Khara",emoji:"🌶️",prices:[["1 kg",250],["100 g",30],["250 g",60]],details:"₹250/kg · ₹30/100 g · ₹60/250 g"},
+  {id:"mixture",name:"All Mixing Mixture",cat:"Khara",emoji:"🥜",prices:[["1 kg",300],["100 g",30],["250 g",60]],details:"₹300/kg · ₹30/100 g · ₹60/250 g"},
+  {id:"green-batani",name:"Green Batani",cat:"Khara",emoji:"🟢",prices:[["1 kg",250],["100 g",30],["250 g",60]],details:"₹250/kg · ₹30/100 g · ₹60/250 g"},
+  {id:"batani",name:"Batani",cat:"Khara",emoji:"🟡",prices:[["1 kg",250],["100 g",30],["250 g",60]],details:"₹250/kg · ₹30/100 g · ₹60/250 g"},
+  {id:"red-batani",name:"Red Batani",cat:"Khara",emoji:"🔴",prices:[["1 kg",250],["100 g",30],["250 g",60]],details:"₹250/kg · ₹30/100 g · ₹60/250 g"},
+  {id:"palli-pakodi",name:"Palli Pakodi",cat:"Khara",emoji:"🥜",prices:[["1 kg",300],["100 g",30],["250 g",80]],details:"₹300/kg · ₹30/100 g · ₹80/250 g"},
+  {id:"fried-chana-dal",name:"Fried Chana Dal",cat:"Khara",emoji:"🟡",prices:[["1 kg",300],["100 g",30],["250 g",75]],details:"₹300/kg · ₹30/100 g · ₹75/250 g"},
+  {id:"moong-chana-mix",name:"Moong Dal with Channa Karapusa Mixing",cat:"Khara",emoji:"🥜",prices:[["1 kg",250],["100 g",30],["250 g",75]],details:"₹250/kg · ₹30/100 g · ₹75/250 g"},
+  {id:"moong-dal",name:"Moong Dal",cat:"Khara",emoji:"🟡",prices:[["1 kg",300],["100 g",30],["50 g",75]],details:"₹300/kg · ₹30/100 g · ₹75/50 g (please verify)"},
+  {id:"moon-biscuits",name:"Moon-Shaped Biscuits",cat:"Biscuits",emoji:"🌙",prices:[["1 kg",250],["100 g",30],["250 g",70]],details:"₹250/kg · ₹30/100 g · ₹70/250 g"},
+  {id:"heart-biscuits",name:"Heart-Shaped Biscuits",cat:"Biscuits",emoji:"❤️",prices:[["1 kg",250],["100 g",30],["250 g",70]],details:"₹250/kg · ₹30/100 g · ₹70/250 g"},
+  {id:"round-biscuits",name:"Round-Shaped Biscuits",cat:"Biscuits",emoji:"🍪",prices:[["1 kg",250],["100 g",30],["250 g",70]],details:"₹250/kg · ₹30/100 g · ₹70/250 g"}
+];
+let category = "All";
+let cart = [];
+const ₹ = n => "₹" + Number(n).toLocaleString("en-IN");
+const productsEl = document.getElementById("products");
+const cartItemsEl = document.getElementById("cartItems");
+function renderProducts() {
+  const q = document.getElementById("search").value.trim().toLowerCase();
+  const shown = products.filter(p => (category==="All" || p.cat===category) && p.name.toLowerCase().includes(q));
+  productsEl.innerHTML = shown.map(p => `
+    <article class="product">
+      <div class="emoji">${p.emoji}</div>
+      <div class="category">${p.cat==="Khara"?"Khara / Savouries":p.cat}</div>
+      <h3>${p.name}</h3>
+      <div class="price">${p.details.split(" · ")[0]}</div>
+      <div class="price-details">${p.details}</div>
+      <select id="size-${p.id}" aria-label="Pack size for ${p.name}">${p.prices.map((x,i)=>`<option value="${i}">${x[0]} — ${₹(x[1])}</option>`).join("")}</select>
+      <button class="primary add" data-id="${p.id}">Add to cart</button>
+    </article>`).join("");
+  if (!shown.length) productsEl.innerHTML = '<p>No items match your search.</p>';
+  productsEl.querySelectorAll(".add").forEach(b => b.addEventListener("click", () => addToCart(b.dataset.id)));
+}
+function addToCart(id) {
+  const p = products.find(x=>x.id===id);
+  const idx = Number(document.getElementById("size-"+id).value);
+  const [size,price] = p.prices[idx];
+  const key = id+"|"+size;
+  const existing = cart.find(x=>x.key===key);
+  if (existing) existing.qty++;
+  else cart.push({key,id,name:p.name,size,price,qty:1});
+  renderCart();
+}
+function changeQty(key,delta) {
+  const item=cart.find(x=>x.key===key);
+  if(!item)return;
+  item.qty+=delta;
+  if(item.qty<=0) cart=cart.filter(x=>x.key!==key);
+  renderCart();
+}
+function renderCart() {
+  const count=cart.reduce((s,x)=>s+x.qty,0);
+  const total=cart.reduce((s,x)=>s+x.price*x.qty,0);
+  document.getElementById("cartCount").textContent="("+count+")";
+  document.getElementById("total").textContent=₹(total);
+  if(!cart.length){cartItemsEl.className="empty";cartItemsEl.textContent="Your cart is empty. Add an item to begin.";return;}
+  cartItemsEl.className="";
+  cartItemsEl.innerHTML=cart.map(x=>`<div class="cartline"><div class="cartline-top"><span>${x.name}</span><span>${₹(x.price*x.qty)}</span></div><div class="category">${x.size} · ${₹(x.price)} each</div><div class="qty"><button type="button" data-key="${x.key}" data-delta="-1" aria-label="Decrease quantity">−</button><span>${x.qty}</span><button type="button" data-key="${x.key}" data-delta="1" aria-label="Increase quantity">+</button><button type="button" style="margin-left:auto" data-key="${x.key}" data-delta="-999" aria-label="Remove item">Remove</button></div></div>`).join("");
+  cartItemsEl.querySelectorAll("button[data-key]").forEach(b=>b.addEventListener("click",()=>{if(b.dataset.delta==="-999")cart=cart.filter(x=>x.key!==b.dataset.key);else changeQty(b.dataset.key,Number(b.dataset.delta));renderCart();}));
+}
+document.getElementById("search").addEventListener("input",renderProducts);
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{category=b.dataset.category;document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t===b));renderProducts();}));
+document.getElementById("checkoutForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  if(!cart.length){alert("Please add at least one item to your cart.");return;}
+  const name=document.getElementById("customerName").value.trim();
+  const phone=document.getElementById("phone").value.trim();
+  const fulfilment=document.getElementById("fulfilment").value;
+  const address=document.getElementById("address").value.trim();
+  const payment=document.getElementById("payment").value;
+  const notes=document.getElementById("notes").value.trim();
+  if(fulfilment==="Home delivery"&&!address){alert("Please enter your delivery address.");return;}
+  const total=cart.reduce((s,x)=>s+x.price*x.qty,0);
+  const lines=cart.map(x=>`• ${x.name} — ${x.size} × ${x.qty} = ${₹(x.price*x.qty)}`).join("\n");
+  const message=`*New Order — Jai Sri Sundha Bhavani Sweet Home*\n\nCustomer: ${name}\nPhone: ${phone}\nOrder type: ${fulfilment}${address?`\nAddress: ${address}`:""}\n\n*Items:*\n${lines}\n\n*Subtotal: ${₹(total)}*\nPayment preference: ${payment}${notes?`\nNotes: ${notes}`:""}\n\nPlease confirm availability, delivery charges and final amount.`;
+  // Default contact is the first shop WhatsApp number supplied by the owner.
+  window.open("https://wa.me/919908053102?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
+});
+let deferredPrompt;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;const b=document.getElementById("installBtn");b.hidden=false;b.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;b.hidden=true;},{once:true});});
+if("serviceWorker" in navigator && location.protocol.startsWith("http")) navigator.serviceWorker.register("./sw.js").catch(()=>{});
+renderProducts();
+</script>
+</body>
+</html>
